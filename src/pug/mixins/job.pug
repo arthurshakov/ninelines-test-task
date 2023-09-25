@@ -1,0 +1,34 @@
+mixin job(data)
+	.job
+		.job__date= data.date
+		.job__block
+			h3.job__title= data.title
+			.job__stones
+				each color in data.stones
+					- const colorClass = `stone--${color}`
+					.stone.stone--16(class=colorClass)
+		.job__block
+			if (typeof data.logo !== 'undefined' && data.logo)
+				- const extension = data.logo.match(/(\..+)$/)[0]
+				if (extension === '.svg')
+					img.job__logo(
+						src= `${baseDir}images/svg/${data.logo}`,
+						alt= typeof data.company !== 'undefined' && data.company ? data.company : 'Логотип компании'
+						)
+				else
+					img.job__logo(
+						srcset=`${baseDir}images/png/${data.logo} 1x, ${baseDir}images/png/${data.logo.replace(/(\..+)$/, '@2x$1')} 2x`
+						src= `${baseDir}images/png/${data.logo}`
+						alt= typeof data.company !== 'undefined' && data.company ? data.company : 'Логотип компании'
+						)
+			.job__company-wrapper
+				if (typeof data.company !== 'undefined' && data.company)
+					h3.job__company= data.company
+				if (typeof data.location !== 'undefined' && data.location)
+					.job__location= data.location
+		.job__block
+			.job__description= data.description
+			if (typeof data.links !== 'undefined' && data.links.length)
+				each link in data.links
+					.job__link
+						a(href=link.url)= link.name

@@ -1,0 +1,9 @@
+mixin course(data)
+	.course
+		.course__stones
+			each color in data.stones
+				.stone(class=`stone--${color}`)
+
+		h3.course__name !{data.name}
+
+		.course__description !{data.description}

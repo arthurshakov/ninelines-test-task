@@ -1,0 +1,28 @@
+// stylelint-disable no-empty-source
+// @include font-face("../fonts/FontName/FontName", "FontName", 400, normal);
+
+@font-face {
+	src:
+		url("../fonts/sfprodisplayregular.woff2") format("woff2"),
+		url("../fonts/sfprodisplayregular.woff") format("woff"),
+		url("../fonts/sfprodisplayregular.eot") format("embedded-opentype"),
+		url("../fonts/sfprodisplayregular.eot?#iefix") format("embedded-opentype"),
+		url("../fonts/sfprodisplayregular.ttf") format("truetype"),
+		url("../fonts/sfprodisplayregular.svg#sf_pro_displayregular") format("svg");
+	font-family: "SF Pro Display";
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
+	src:
+		url("../fonts/sfprodisplaybold.woff2") format("woff2"),
+		url("../fonts/sfprodisplaybold.woff") format("woff"),
+		url("../fonts/sfprodisplaybold.eot") format("embedded-opentype"),
+		url("../fonts/sfprodisplaybold.eot?#iefix") format("embedded-opentype"),
+		url("../fonts/sfprodisplaybold.ttf") format("truetype"),
+		url("../fonts/sfprodisplaybold.svg#sf_pro_displaybold") format("svg");
+	font-family: "SF Pro Display";
+	font-weight: 700;
+	font-style: normal;
+}

@@ -1,0 +1,223 @@
+.header {
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	z-index: 2100;
+	transform: translateY(0);
+	transition: $duration-normal ease-out;
+	pointer-events: none;
+
+	&__container {
+		display: flex;
+		justify-content: end;
+		margin: 0 auto;
+		padding: vw(100) vw(150) 0;
+		width: 100%;
+		max-width: $max-width;
+		pointer-events: none;
+
+		@include desktop-xl {
+			padding: px-dxl(100) px-dxl(150) 0;
+		}
+
+		@include devices {
+			justify-content: start;
+			padding: vm(60) vm(40);
+			width: 100%;
+			height: 100vh;
+			background-color: $color-white;
+			transform: translateX(-100%);
+			transition: $duration-normal;
+			pointer-events: all;
+
+			.has-active-menu & {
+				transform: translateX(0);
+			}
+		}
+	}
+
+	&__background {
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		display: flex;
+		justify-content: center;
+		width: 100%;
+		height: vm(310);
+
+		picture,
+		img {
+			width: auto;
+			height: 100%;
+		}
+	}
+
+	.not-at-the-top & {
+		transform: translateY(-50%);
+	}
+
+	@include devices {
+		.not-at-the-top & {
+			transform: translateY(0);
+		}
+	}
+}
+
+.menu {
+	z-index: 98;
+	display: flex;
+	align-items: flex-start;
+
+	// stylelint-disable-next-line
+	// height: calc(var(--vh) - 84px);
+
+	transition: $duration-normal;
+	pointer-events: all;
+	-webkit-overflow-scrolling: touch;
+
+	&__item {
+		position: relative;
+
+		@include devices {
+			&:not(:last-child) {
+				margin-bottom: vm(40);
+			}
+		}
+	}
+
+	&__link {
+		padding: vw(15);
+		font-weight: 700;
+		font-size: vw(18);
+		line-height: 1.4;
+		color: rgba($color-black, 0.7);
+
+		&:last-child {
+			padding-right: 0;
+		}
+
+		.menu__item.is-active & {
+			color: $color-black;
+		}
+
+		@include hover {
+			color: $color-black;
+		}
+
+		@include desktop-xl {
+			padding: px-dxl(15);
+			font-size: px-dxl(18);
+		}
+
+		@include devices {
+			font-size: vm(26);
+		}
+	}
+
+	&__link-bg {
+		position: absolute;
+		left: 0;
+		top: 0;
+		z-index: -1;
+		width: vw(156);
+		height: vw(156);
+		background-image: url("../images/sprites/svg/menu-item-bg.svg");
+		background-position: center;
+		background-size: contain;
+		background-repeat: no-repeat;
+		opacity: 0;
+		transform: translate(vw(-32), vw(-97));
+		transition: $duration-normal;
+		pointer-events: none;
+
+		.menu__link:hover + &,
+		.menu__item.is-active & {
+			opacity: 1;
+		}
+
+		@include desktop-xl {
+			width: px-dxl(156);
+			height: px-dxl(156);
+			transform: translate(px-dxl(-32), px-dxl(-97));
+		}
+
+		@include devices {
+			width: vm(68);
+			height: vm(68);
+			transform: translate(18%, -30%);
+		}
+	}
+
+	@include devices {
+		flex-direction: column;
+	}
+}
+
+$layerDelay: 0.15s;
+
+.burger {
+	position: absolute;
+	right: vm(15);
+	top: vm(25);
+	z-index: 100;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: vm(36);
+	height: vm(28);
+	transform: rotateY(0);
+	transition: $duration-normal;
+	pointer-events: all;
+
+	&__wrapper {
+		position: relative;
+		width: vm(26);
+		height: vm(18);
+	}
+
+	&__layer {
+		position: absolute;
+		left: 0;
+		top: 50%;
+		width: 100%;
+		height: vm(2);
+		background-color: $color-black;
+		transform-origin: 50% 50%;
+		transition: 0.2s;
+		transition-delay: 0s;
+
+		&:first-of-type {
+			transform: translateY(#{vm(-9)});
+
+			.has-active-menu & {
+				transform: translateY(0) rotate(45deg) scaleX(1);
+				transition-delay: $layerDelay;
+			}
+		}
+
+		&:nth-of-type(2) {
+			transform: translateY(#{vm(-1)}) scaleX(1);
+			transition-delay: $layerDelay;
+
+			.has-active-menu & {
+				transform: scaleX(0);
+				transition-delay: 0s;
+			}
+		}
+
+		&:last-of-type {
+			transform: translateY(#{vm(7)});
+
+			.has-active-menu & {
+				transform: translateY(0) rotate(-45deg) scaleX(1);
+				transition-delay: $layerDelay;
+			}
+		}
+	}
+
+	.has-active-menu & {
+		transform: rotate(360deg);
+	}
+}

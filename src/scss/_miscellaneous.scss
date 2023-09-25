@@ -1,0 +1,101 @@
+// HEADINGS
+h1,
+.h1 {
+	margin-top: 0;
+	margin-bottom: vw(30);
+	font-weight: 700;
+	font-size: vw(36);
+	line-height: 1.4;
+
+	@include desktop-xl {
+		margin-bottom: px-dxl(30);
+		font-size: px-dxl(36);
+	}
+
+	@include devices {
+		margin-bottom: vm(20);
+		font-size: vm(28);
+	}
+}
+
+h2,
+.h2 {
+	margin-top: 0;
+	margin-bottom: vw(30);
+	font-size: vw(24);
+	line-height: 1.2;
+
+	@include desktop-xl {
+		margin-bottom: px-dxl(30);
+		font-size: px-dxl(24);
+	}
+
+	@include devices {
+		margin-bottom: vm(20);
+		font-size: vm(20);
+	}
+}
+
+h3,
+.h3 {
+	margin: 0;
+	font-size: vw(14);
+	line-height: 1.2;
+
+	@include desktop-xl {
+		font-size: px-dxl(14);
+	}
+
+	@include devices {
+		font-size: vm(14);
+	}
+}
+
+// ARROW TO TOP
+.arrow-to-top {
+	position: fixed;
+	right: vw(25);
+	bottom: vw(90);
+	width: vw(48);
+	height: vw(48);
+	opacity: 0;
+	visibility: hidden;
+	transform: translateY(50%);
+	transition: $duration-normal ease-out;
+	cursor: pointer;
+
+	svg {
+		width: 100%;
+		height: 100%;
+	}
+
+	.reached-the-bottom & {
+		opacity: 1;
+		visibility: visible;
+		transform: translateY(0);
+	}
+
+	@include desktop-xl {
+		right: calc(50vw - #{$max-width / 2 - 25px});
+		bottom: px-dxl(90);
+		width: px-dxl(48);
+		height: px-dxl(48);
+	}
+
+	@include devices {
+		right: vm(20);
+		bottom: vm(20);
+		width: vm(30);
+		height: vm(30);
+	}
+}
+
+// LAZYLOADING PICTURE
+.js-lazy {
+	opacity: 0;
+	transition: $duration-normal;
+
+	&.is-loaded {
+		opacity: 1;
+	}
+}

@@ -1,0 +1,19 @@
+.modal(data-modal-name="sharing")
+	.modal__background
+
+	.modal__content
+		.modal__text
+			.modal__title.h1
+				| #{data.about.name},
+				br
+				| #{data.about.position}
+			.modal__text
+				| !{data.about.text}
+
+		+lazyPicture({
+			src: `${baseDir}images/png/sharing-dude.png`,
+			alt: 'Делящийся чувак',
+		}).modal__image
+
+		.modal__x
+			| ×

@@ -1,0 +1,15 @@
+footer.footer
+	+lazyPicture({
+		src: `${baseDir}images/png/heart-gesture.png`,
+		alt: 'Руки, сложенные в форме сердца.'
+	}, [
+		{
+			srcset: `${baseDir}images/png/heart-gesture.png 1x, ${baseDir}images/png/heart-gesture@2x.png 2x`,
+		}
+	]).footer__picture
+
+	//- .footer__copyright
+	//- 	span(data-actual-year)
+
+	//- .footer__developer
+	//- 	| &copy;&nbsp;Девять линий

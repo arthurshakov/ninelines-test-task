@@ -1,0 +1,55 @@
+.preloader {
+	position: fixed;
+	z-index: 10000;
+	width: 100%;
+	height: 100%;
+
+	&__background {
+		position: absolute;
+		left: 0;
+		top: 0;
+		z-index: -1;
+		width: 100%;
+		height: 100%;
+		background-color: #fff;
+	}
+
+	&__container {
+		position: relative;
+		display: flex;
+		align-items: end;
+		justify-content: center;
+		padding-bottom: 10vh;
+		height: 100%;
+		font-family: "Arial", sans-serif;
+		font-weight: 700;
+		font-size: 5vh;
+		text-align: center;
+	}
+
+	&__image {
+		position: absolute;
+		right: 100%;
+		top: 100%;
+		width: vw(590);
+		height: vw(590);
+
+		@include desktop-xl {
+			width: px-dxl(590);
+			height: px-dxl(590);
+		}
+
+		@include devices {
+			width: vm(250);
+			height: vm(250);
+		}
+	}
+
+	&__percentage {
+		opacity: 0;
+	}
+
+	.is-loaded & {
+		display: none;
+	}
+}

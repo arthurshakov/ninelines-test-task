@@ -1,0 +1,24 @@
+header.header
+	.container.header__container
+		nav.menu
+			each menuItem, key in data.header.menu
+				.menu__item.menu__stagger-item
+					a.menu__link(
+						href=menuItem.url
+						data-link=key
+					)
+						!= menuItem.name
+
+					.menu__link-bg
+
+		.header__background.for-devices.menu__hourglass
+			+lazyPicture({
+				src: `${baseDir}images/png/hourglass.png`,
+				alt: 'Песочные часы',
+			})
+
+	.burger.for-devices
+		.burger__wrapper
+			.burger__layer
+			.burger__layer
+			.burger__layer
